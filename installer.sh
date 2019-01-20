@@ -21,3 +21,8 @@ echo "GRANT ALL PRIVILEGES ON openproject.* TO 'openproject'@'localhost';" | sud
 echo "FLUSH PRIVILEGES;" | sudo mysql
 sudo apt update
 sudo apt -y install openproject
+
+echo "Password for the MySQL is: 5GqhRkyGefxWZU2b"
+echo "Please follow the installer"
+
+openproject reconfigure
