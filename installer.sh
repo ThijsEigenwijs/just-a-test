@@ -6,23 +6,13 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 echo "Executed as root user, thanks!"
-echo "Installing OpenProject on your server"
+echo "Installing OrangeScrum on your server"
 echo "Please grab a beer while your awaite"
 
-sudo apt update
-sudo apt -y install apt-transport-https memcached
-wget -qO- https://dl.packager.io/srv/opf/openproject-ce/key | sudo apt-key add -
-sudo add-apt-repository universe
-sudo wget -O /etc/apt/sources.list.d/openproject-ce.list https://dl.packager.io/srv/opf/openproject-ce/stable/8/installer/ubuntu/18.04.repo
-sudo apt -y install mysql-server libmysqlclient-dev mysql-client
-echo "CREATE USER 'openproject'@'localhost' IDENTIFIED BY '5GqhRkyGefxWZU2b';" | sudo mysql
-echo "CREATE DATABASE openproject CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | sudo mysql
-echo "GRANT ALL PRIVILEGES ON openproject.* TO 'openproject'@'localhost';" | sudo mysql
-echo "FLUSH PRIVILEGES;" | sudo mysql
-sudo apt update
-sudo apt -y install openproject
+sudo apt install apache2
+systemctl enable apache2
+systemctl start apache2
+sudo systemctl status apache2
+sudo apt install unzip wget php7.2 php7.2-bcmath php7.2-cgi php7.2-cli php7.2-common php-curl php7.2-dba php7.2-enchant php7.2-fpm php7.2-gd php7.2-imap php7.2-intl php7.2-ldap php7.2-mbstring php7.2-mysql php7.2-opcache php-imagick php-memcache php7.2-soap php7.2-tidy php7.2-xml php7.2-zip libapache2-mod-php7.2 xvfb libfontconfig wkhtmltopdf
 
-echo "Password for the MySQL is: 5GqhRkyGefxWZU2b"
-echo "Please follow the installer"
-
-openproject reconfigure
+ 
